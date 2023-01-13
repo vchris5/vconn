@@ -9,7 +9,7 @@
           <Link :href="route('listing.index')">Connect</Link>
         </div>
         <div>
-          <Link :href="route('listing.create')" class="bg-sky-900 hover:bg-sky-600 text-white font-medium p-2 rounded-md">+ New Listing</Link>
+          <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
         </div>
       </nav>
     </div>
