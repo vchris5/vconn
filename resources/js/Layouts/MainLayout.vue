@@ -11,9 +11,12 @@
         <div v-if="user" class="flex items-center gap-4">
           <div class="text-sm text-gray-600 dark:text-gray-300">{{ user.name }}</div>
           <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
-          <div>Logout</div>
+          <div>
+            <Link :href="route('logout')" method="delete" as="button">Logout</Link>
+          </div>
         </div>
-        <div v-else>
+        <div v-else class="flex items-center gap-4">
+          <Link :href="route('user-account.create')">Register </Link>
           <Link :href="route('login')">Sign-In</Link>
         </div>
       </nav>
@@ -21,7 +24,7 @@
   </header>
 
   <main class="container mx-auto p-4 w-full">
-    <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-700 p-2">
+    <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-300 dark:border-green-700 bg-green-200 dark:bg-green-600 p-2">
       {{ flashSuccess }}
     </div>
     <slot>Default</slot>

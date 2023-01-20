@@ -8,6 +8,16 @@ use App\Models\Listing;
 class ListingController extends Controller
 {
     /**
+     * ALTERNATIVE WAY FOR DEFINING THE CONSTRUCTOR
+     *
+     * Defining the constructor to specifying the middleware inside the file with Routes
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index', 'show']);
+    // }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
