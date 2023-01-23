@@ -18,7 +18,7 @@ class Listing extends Model
     {
         return $this->belongsTo(
             \App\Models\User::class,
-            'by_user_id'
+            'owner_id'
         );
     }
 

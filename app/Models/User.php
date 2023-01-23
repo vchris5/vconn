@@ -62,7 +62,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(
             \App\Models\Listing::class,
-            'by_user_id'
+            'owner_id'
         );
     }
 }
