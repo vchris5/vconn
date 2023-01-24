@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Listing;
+use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
@@ -30,7 +30,6 @@ class ListingController extends Controller
                 'listings' => Listing::all()
             ]
         );
-        //
     }
 
     /**
@@ -40,12 +39,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return inertia(
-            'Listing/Create',
-            [
-                'listing' => new Listing()
-            ]
-        );
+        return inertia('Listing/Create');
     }
 
     /**
@@ -68,11 +62,12 @@ class ListingController extends Controller
                 'code' => 'required',
                 'street' => 'required',
                 'street_nr' => 'required|min:1|max:1000',
-                'price' => 'required|integer|min:1|max:20000000'
+                'price' => 'required|integer|min:1|max:20000000',
             ])
         );
 
-        return redirect()->route('listing.index')->with('success', 'Listing was created!');
+        return redirect()->route('listing.index')
+            ->with('success', 'Listing was created!');
     }
 
     /**
@@ -107,7 +102,7 @@ class ListingController extends Controller
         );
     }
 
-    /**
+     /**
      * Update the specified resource in storage.
      *
      *
@@ -125,11 +120,11 @@ class ListingController extends Controller
                 'code' => 'required',
                 'street' => 'required',
                 'street_nr' => 'required|min:1|max:1000',
-                'price' => 'required|integer|min:1|max:20000000'
+                'price' => 'required|integer|min:1|max:20000000',
             ])
         );
 
-        return redirect()->route('listing.index')->with('success', 'Listing was changed successfully!');
+        return redirect()->route('listing.index')->with('success', 'Listing was changed!');
     }
 
     /**

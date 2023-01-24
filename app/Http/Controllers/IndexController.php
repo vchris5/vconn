@@ -22,28 +22,25 @@ class IndexController extends Controller
         // Listing::make([
         //     'beds' => 2, 'baths' => 2, 'area' => 100, 'city' => 'North', 'street' => 'Tinker st', 'street_nr' => 20, 'code' => 'TS', 'price' => 200_000
         // ]);
-
         // dd(Auth::user());
-
         // dd(Auth::check());
 
-        dd(
-            Hash::make('password'),
-            '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            Hash::check('password', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi')
-        );
+        // dd(
+        //     Hash::make('password'),
+        //     '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+        //     Hash::check('password', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi')
+        // );
 
-        return inertia(
+          return inertia(
             'Index/Index',
             [
-                'message' => 'Hello from Laravel'
+                'message' => 'Hello from Laravel!'
             ]
         );
-    } // End index() method
+    } // end function index() method
 
     public function show()
     {
         return inertia('Index/Show');
-    } // End show() method
-
+    } // end function show() method
 }

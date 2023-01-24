@@ -15,7 +15,7 @@
         <button class="btn-primary w-full" type="submit">Login</button>
 
         <div class="mt-2 text-center">
-          <Link :href="route('user-account.create')" class="text-sm text-gray-600 dark:text-gray-300">
+          <Link :href="route('user-account.create')" class="text-sm text-gray-500 dark:text-gray-200">
             Need an account? Click here
           </Link>
         </div>
@@ -26,7 +26,6 @@
 
 <script setup>
 import { useForm, Link } from '@inertiajs/inertia-vue3'
-
 const form = useForm({
   email: null,
   password: null,
