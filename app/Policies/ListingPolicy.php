@@ -16,9 +16,10 @@ class ListingPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
         //
+        return true;
     }
 
     /**
@@ -28,9 +29,10 @@ class ListingPolicy
      * @param  \App\Models\Listing  $listing
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Listing $listing)
+    public function view(?User $user, Listing $listing)
     {
         //
+        return true;
     }
 
     /**
@@ -42,6 +44,7 @@ class ListingPolicy
     public function create(User $user)
     {
         //
+        return true;
     }
 
     /**
@@ -54,6 +57,7 @@ class ListingPolicy
     public function update(User $user, Listing $listing)
     {
         //
+        return $user->id == $listing->owner_id;
     }
 
     /**
@@ -66,6 +70,7 @@ class ListingPolicy
     public function delete(User $user, Listing $listing)
     {
         //
+        return $user->id == $listing->owner_id;
     }
 
     /**
@@ -78,6 +83,7 @@ class ListingPolicy
     public function restore(User $user, Listing $listing)
     {
         //
+        return $user->id == $listing->owner_id;
     }
 
     /**
@@ -90,5 +96,6 @@ class ListingPolicy
     public function forceDelete(User $user, Listing $listing)
     {
         //
+        return $user->id == $listing->owner_id;
     }
 }
