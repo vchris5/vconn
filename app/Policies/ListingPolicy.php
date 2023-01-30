@@ -10,6 +10,13 @@ class ListingPolicy
 {
     use HandlesAuthorization;
 
+    public function before(?User $user, $ability)
+    {
+        if ($user?->is_admin /*&& $ability === 'update'*/) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -18,7 +25,6 @@ class ListingPolicy
      */
     public function viewAny(?User $user)
     {
-        //
         return true;
     }
 
@@ -31,7 +37,6 @@ class ListingPolicy
      */
     public function view(?User $user, Listing $listing)
     {
-        //
         return true;
     }
 
@@ -43,7 +48,6 @@ class ListingPolicy
      */
     public function create(User $user)
     {
-        //
         return true;
     }
 
@@ -56,8 +60,7 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing)
     {
-        //
-        return $user->id == $listing->owner_id;
+        return $user->id === $listing->owner_id;
     }
 
     /**
@@ -69,8 +72,7 @@ class ListingPolicy
      */
     public function delete(User $user, Listing $listing)
     {
-        //
-        return $user->id == $listing->owner_id;
+        return $user->id === $listing->owner_id;
     }
 
     /**
@@ -82,8 +84,7 @@ class ListingPolicy
      */
     public function restore(User $user, Listing $listing)
     {
-        //
-        return $user->id == $listing->owner_id;
+        return $user->id === $listing->owner_id;
     }
 
     /**
@@ -95,7 +96,6 @@ class ListingPolicy
      */
     public function forceDelete(User $user, Listing $listing)
     {
-        //
-        return $user->id == $listing->owner_id;
+        return $user->id === $listing->owner_id;
     }
 }
