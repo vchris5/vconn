@@ -13,20 +13,32 @@ class RealtorListingController extends Controller
         $this->authorizeResource(Listing::class, 'listing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         // dd(Auth::user()->listings);
+        // dd($request->boolean('deleted'));
+        $filters = [
+            'deleted' => $request->boolean('deleted'),
+            ... $request->only(['by', 'order'])
+        ];
+
         return inertia(
             'Realtor/Index',
-            ['listings' => Auth::user()->listings]
+            [
+                'listings' => Auth::user()
+                    ->listings()
+                    // ->mostRecent()
+                    ->filter($filters)
+                    ->get()
+            ]
         );
     }
 
     public function destroy(Listing $listing)
     {
         /**
-        * Delete the model from the database within a transaction.
-        **/
+         * Delete the model from the database within a transaction.
+         **/
         $listing->deleteOrFail();
 
         return redirect()->back()
