@@ -1,6 +1,6 @@
 <template>
   <form>
-    <div class="mb-4 mt-4 flex flex-wrap gap-2">
+    <div class="mb-4 mt-4 flex flex-wrap gap-4">
       <div class="flex flex-nowrap items-center gap-2">
         <input
           id="deleted"
@@ -10,17 +10,60 @@
         />
         <label for="deleted">Deleted</label>
       </div>
+
+      <div>
+        <select v-model="filterForm.by" class="input-filter-l w-24">
+          <option value="created_at">DATE</option>
+          <option value="price">PRICE</option>
+        </select>
+        <select v-model="filterForm.order" class="input-filter-r w-32">
+          <option
+            v-for="option in sortOptions"
+            :key="option.value"
+            :value="option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
     </div>
   </form>
 </template>
 
 <script setup>
 import { Inertia } from '@inertiajs/inertia'
-import { reactive, watch } from 'vue'
+import { reactive, watch, computed } from 'vue'
 import { debounce } from 'lodash'
+
+const sortLabels = {
+  created_at: [
+    {
+      label: 'NEW',
+      value: 'desc',
+    },
+    {
+      label: 'OLD',
+      value: 'asc',
+    },
+  ],
+  price: [
+    {
+      label: 'HIGH',
+      value: 'desc',
+    },
+    {
+      label: 'LOW',
+      value: 'asc',
+    },
+  ],
+}
+
+const sortOptions = computed(() => sortLabels[filterForm.by])
 
 const filterForm = reactive({
   deleted: false,
+  by: 'created_at',
+  order: 'desc',
 })
 
 watch(
