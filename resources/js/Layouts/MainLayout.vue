@@ -10,7 +10,7 @@
         </div>
         <div v-if="user" class="flex items-center gap-4">
           <Link :href="route('realtor.listing.index')" class="text-sm text-gray-600 dark:text-gray-300">{{ user.name }}</Link>
-          <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
+          <Link :href="route('realtor.listing.create')" class="btn-primary">+ New Listing</Link>
           <div>
             <Link :href="route('logout')" method="delete" as="button">Logout</Link>
           </div>
@@ -24,7 +24,7 @@
   </header>
 
   <main class="container mx-auto p-4 w-full">
-    <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-300 dark:border-green-500 bg-green-200 dark:bg-green-600 p-2">
+    <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-300 dark:border-green-500 bg-green-200 dark:bg-green-400 p-2 dark:text-gray-200">
       {{ flashSuccess }}
     </div>
     <slot>Default</slot>
