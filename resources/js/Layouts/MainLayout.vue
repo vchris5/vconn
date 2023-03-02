@@ -24,7 +24,8 @@
   </header>
 
   <main class="container mx-auto p-4 w-full">
-    <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-300 dark:border-green-500 bg-green-200 dark:bg-green-400 p-2 dark:text-gray-200">
+    <!-- <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-300 dark:border-green-500 bg-green-200 dark:bg-green-400 p-2 dark:text-gray-200"> -->
+    <div v-if="flashSuccess" class="flex p-4 mb-4 border rounded-lg shadow-sm text-green-800 border-green-300 bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800">
       {{ flashSuccess }}
     </div>
     <slot>Default</slot>
