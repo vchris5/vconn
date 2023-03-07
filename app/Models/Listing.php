@@ -31,7 +31,7 @@ class Listing extends Model
 
     public function images(): HasMany
     {
-        return $this->hasMany(ListingImages::class);
+        return $this->hasMany(ListingImage::class);
     }
 
     public function scopeMostRecent(Builder $query): Builder
