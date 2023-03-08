@@ -2,22 +2,48 @@
   <Box>
     <template #header>Upload New Images</template>
     <form @submit.prevent="upload">
-      <input type="file" multiple @input="addFiles" />
-      <button type="submit" class="btn-outline">Upload</button>
-      <button type="reset" class="btn-outline" @click="reset">Reset</button>
+      <section class="flex items-center gap-2 my-4">
+        <input
+          class="border rounded-md file:px-4 file:py-2 border-gray-200 dark:border-gray-700 file:text-gray-700 file:dark:text-gray-400 file:border-0 file:bg-gray-100 file:dark:bg-gray-800 file:font-medium file:hover:bg-gray-200 file:dark:hover:bg-gray-700 file:hover:cursor-pointer file:mr-4"
+          type="file"
+          multiple
+          @input="addFiles"
+        />
+        <button
+          type="submit"
+          class="btn-outline disabled:opacity-30 disabled:cursor-not-allowed"
+          :disabled="!canUpload"
+        >
+          Upload
+        </button>
+        <button type="reset" class="btn-outline" @click="reset">Reset</button>
+      </section>
     </form>
   </Box>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import Box from '@/Components/UI/Box.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
+import { router } from '@inertiajs/vue3'
+import NProgress from 'nprogress'
 
 const props = defineProps({ listing: Object })
+
+router.on('progress', (event) => {
+  // event.detail.progress.percentage - is where the current request progress can be found in percentage
+  if (event.detail.progress.percentage) {
+    // set the progress on the progress bar to be specific
+    NProgress.set((event.detail.progress.percentage / 100) * 0.9)
+  }
+})
 
 const form = useForm({
   images: [],
 })
+
+const canUpload = computed(() => form.images.length)
 
 const upload = () => {
   form.post(
