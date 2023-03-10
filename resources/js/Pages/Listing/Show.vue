@@ -1,7 +1,14 @@
 <template>
   <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
     <Box class="md:col-span-7 flex items-center w-full">
-      <div class="w-full text-center font-medium text-gray-400">
+      <div v-if="listing.images.length" class="grid grid-cols-2 gap-1">
+        <img
+          v-for="image in listing.images"
+          :key="image.id"
+          :src="image.src"
+        />
+      </div>
+      <div v-else class="w-full text-center font-medium text-gray-400">
         No image
       </div>
     </Box>
@@ -23,7 +30,14 @@
 
         <div>
           <label class="label">Interest rate ({{ interestRate }}%)</label>
-          <input v-model.number="interestRate" type="range" min="0.1" max="30" step="0.1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+          <input
+            v-model.number="interestRate"
+            type="range"
+            min="0.1"
+            max="30"
+            step="0.1"
+            class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+          />
 
           <label class="label">Duration ({{ duration }} years)</label>
           <input

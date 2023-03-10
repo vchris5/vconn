@@ -18,11 +18,16 @@
         </button>
         <button type="reset" class="btn-outline" @click="reset">Reset</button>
       </section>
+      <div v-if="imageErrors.length" class="input-error">
+        <div v-for="(error, index) in imageErrors" :key="index">
+          {{ error }}
+        </div>
+      </div>
     </form>
   </Box>
 
   <Box v-if="listing.images.length" class="mt-4">
-    <template #header>Uploaded Listing Images</template>
+    <template #header>Uploaded Images</template>
     <section class="mt-4 grid grid-cols-3 gap-4">
       <div
         v-for="image in listing.images"
@@ -63,6 +68,8 @@ Inertia.on('progress', (event) => {
 const form = useForm({
   images: [],
 })
+
+const imageErrors = computed(() => Object.values(form.errors))
 
 const canUpload = computed(() => form.images.length)
 
