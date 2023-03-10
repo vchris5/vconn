@@ -22,10 +22,22 @@
   </Box>
 
   <Box v-if="listing.images.length" class="mt-4">
-    <template #header>Listing Images</template>
+    <template #header>Uploaded Listing Images</template>
     <section class="mt-4 grid grid-cols-3 gap-4">
-      <div v-for="image in listing.images" :key="image.id">
+      <div
+        v-for="image in listing.images"
+        :key="image.id"
+        class="flex flex-col justify-between"
+      >
         <img :src="image.src" class="rounded-md" />
+        <Link
+          :href="route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id })"
+          method="delete"
+          as="button"
+          class="mt-2 btn-outline text-sm"
+        >
+          Delete
+        </Link>
       </div>
     </section>
   </Box>
@@ -34,13 +46,13 @@
 <script setup>
 import { computed } from 'vue'
 import Box from '@/Components/UI/Box.vue'
-import { useForm } from '@inertiajs/inertia-vue3'
-import { router } from '@inertiajs/vue3'
+import { useForm, Link } from '@inertiajs/inertia-vue3'
+import { Inertia } from '@inertiajs/inertia'
 import NProgress from 'nprogress'
 
 const props = defineProps({ listing: Object })
 
-router.on('progress', (event) => {
+Inertia.on('progress', (event) => {
   // event.detail.progress.percentage - is where the current request progress can be found in percentage
   if (event.detail.progress.percentage) {
     // set the progress on the progress bar to be specific
