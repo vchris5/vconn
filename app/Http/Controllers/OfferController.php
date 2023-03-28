@@ -20,7 +20,7 @@ class OfferController extends Controller
 
         return redirect()->back()->with(
             'success',
-            'Offer made!'
+            'Offer was made!'
         );
     }
 }
