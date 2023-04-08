@@ -9,7 +9,7 @@
           <Link :href="route('listing.index')">Connect</Link>
         </div>
         <div v-if="user" class="flex items-center gap-4">
-          <div>
+          <Link :href="route('notification.index')">
             <button
               type="button"
               class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
@@ -22,7 +22,7 @@
                 {{ notificationCount }}
               </div>
             </button>
-          </div>
+          </Link>
           <Link :href="route('realtor.listing.index')" class="text-sm text-gray-600 dark:text-gray-300">{{ user.name }}</Link>
           <Link :href="route('realtor.listing.create')" class="btn-primary">+ New Listing</Link>
           <div>
