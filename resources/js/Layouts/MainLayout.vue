@@ -12,13 +12,13 @@
           <Link :href="route('notification.index')">
             <button
               type="button"
-              class="relative z-10 block p-3 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
+              class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
             >
               <svg class="w-6 h-6 text-gray-800 dark:text-white" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
               </svg>
               <!-- <span class="sr-only">Notifications</span> -->
-              <div v-if="notificationCount" class="absolute inline-flex items-center justify-center w-5 h-5 text-xs text-center font-medium text-white bg-red-700 dark:bg-red-500 border border-white rounded-full top-0.5 right-2 dark:border-gray-900">
+              <div v-if="notificationCount" class="absolute inline-flex items-center justify-center w-5 h-5 text-xs text-center font-medium text-white bg-red-700 dark:bg-red-500 border border-white rounded-full top-0 right-1 dark:border-gray-900">
                 {{ notificationCount }}
               </div>
             </button>
