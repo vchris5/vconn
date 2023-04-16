@@ -28,7 +28,7 @@
     }
 
     .btn-primary {
-        @apply bg-sky-900 hover:bg-sky-600 text-white font-medium p-2 rounded-md
+        @apply bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg px-5 py-2.5
     }
 
     .btn-outline {

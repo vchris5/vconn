@@ -6,7 +6,7 @@
           <Link :href="route('listing.index')">Listings</Link>
         </div>
         <div class="text-lg text-gray-700 dark:text-white font-bold text-center">
-          <Link :href="route('listing.index')">Connect</Link>
+          <Link :href="route('index')">Connect</Link>
         </div>
         <div v-if="user" class="flex items-center gap-4">
           <Link :href="route('notification.index')">
@@ -51,9 +51,11 @@ import { computed } from 'vue'
 import { Link, usePage } from '@inertiajs/inertia-vue3'
 
 const page = usePage()
+
 const flashSuccess = computed(
   () => page.props.value.flash.success,
 )
+
 const user = computed(
   () => page.props.value.user,
 )
